@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import axios from 'axios'
 import "./App.css";
 
 import Todos from "./components/Todos";
@@ -11,28 +12,33 @@ import About from "./components/About"
 class App extends Component {
   state = {
     todos: [
-      {
-        id: uuidv4(),
-        title: "something",
-        completed: false
-      },
-      {
-        id: uuidv4(),
-        title: "things",
-        completed: true
-      },
-      {
-        id: uuidv4(),
-        title: "something AHAHAHAHAH",
-        completed: false
-      },
-      {
-        id: uuidv4(),
-        title: "What",
-        completed: false
-      }
+      // {
+      //   id: uuidv4(),
+      //   title: "something",
+      //   completed: false
+      // },
+      // {
+      //   id: uuidv4(),
+      //   title: "things",
+      //   completed: true
+      // },
+      // {
+      //   id: uuidv4(),
+      //   title: "something AHAHAHAHAH",
+      //   completed: false
+      // },
+      // {
+      //   id: uuidv4(),
+      //   title: "What",
+      //   completed: false
+      // }
     ]
   };
+  componentDidMount() {
+    console.log(axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10').then( resp => {
+      this.setState({todos: resp.data})
+    }))
+  }
   markComplete = id => {
     const newTodos = this.state.todos.map(todo => {
       if (todo.id === id) todo.completed = !todo.completed;
