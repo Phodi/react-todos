@@ -15,7 +15,7 @@ class TodoItem extends Component {
                 <p>
                     <input type="checkbox" />
                     todo info
-                    <button style={btnStyle}></button>
+                    <button style={btnStyle}>KUY</button>
                 </p>
             </div>
         );
