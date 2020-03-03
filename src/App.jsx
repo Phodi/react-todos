@@ -28,17 +28,18 @@ class App extends Component {
     ]
   };
   markComplete = id => {
-    const newTodos = this.state.todos
-    newTodos.forEach( todo => {
-      if (todo.id === id) todo.completed = !todo.completed
-    })
+    const newTodos = this.state.todos.map(todo => {
+      if (todo.id === id) todo.completed = !todo.completed;
+      return todo
+    });
+    this.setState({todos: newTodos})
   };
   delTodo = id => {
-    let newTodos = this.state.todos
+    let newTodos = this.state.todos;
     newTodos = newTodos.filter(todo => {
-      return todo.id !== id
-    })
-    this.setState({todos: newTodos})
+      return todo.id !== id;
+    });
+    this.setState({ todos: newTodos });
   };
   render() {
     return (
