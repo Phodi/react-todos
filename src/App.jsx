@@ -27,12 +27,20 @@ class App extends Component {
       },
     ]
   }
+  markComplete = () => {
+    console.log('mark')
+  }
+  delTodo = () => {
+    console.log('del')
+  }
   render() {
     return (
       <div className="App">
         <div className="container">
           <h3>AAA</h3>
-          <Todos todos={this.state.todos} />
+          <Todos  todos={this.state.todos}
+                  markComplete={this.markComplete} 
+                  delTodo={this.delTodo} />
         </div>
       </div>
     );
