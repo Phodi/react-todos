@@ -6,16 +6,19 @@ class TodoItem extends Component {
           background: '#f4f4f4',
           padding: '10px',
           borderBottom: '1px #ccc dotted',
-        //   textDecoration: this.props.todo.completed ? 'line-through':'none'
+          textDecoration: this.props.todo_item.completed ? 'line-through':'none'
         }
     }
+    checkCompleted = () => {
+        return this.props.todo_item.completed ? 'checked':'';
+    }
     render() {
-        const { id, title, completed} = this.props.todo_item
+        const { id, title} = this.props.todo_item
         return (
             <div style={this.getStyle()}>
                 <p>
-                    <input type="checkbox" />
-                    {title}
+                    <input type="checkbox" checked={this.checkCompleted()} />
+                    {' '}{title}
                     <button style={btnStyle}>X</button>
                 </p>
             </div>

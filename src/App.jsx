@@ -8,22 +8,22 @@ class App extends Component {
       {
         id: 1,
         title: 'something',
-        complete: false
+        completed: false
       },
       {
         id: 2,
         title: 'things',
-        complete: true
+        completed: true
       },
       {
         id: 3,
         title: 'something AHAHAHAHAH',
-        complete: false
+        completed: false
       },
       {
         id: 4,
         title: 'What',
-        complete: false
+        completed: false
       },
     ]
   }
