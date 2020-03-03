@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
+
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
-import { v4 as uuidv4 } from 'uuid'
+import Header from "./components/Header";
+import About from "./components/About"
 
 class App extends Component {
   state = {
@@ -49,22 +53,31 @@ class App extends Component {
       title: title,
       completed: false
     };
-    this.state.todos.push(newTodo)
-    this.setState({todos: this.state.todos})
+    this.state.todos.push(newTodo);
+    this.setState({ todos: this.state.todos });
   };
   render() {
     return (
+      <Router>
       <div className="App">
         <div className="container">
-          <h3>Todos</h3>
-          <AddTodo addTodo={this.addTodo} />
-          <Todos
-            todos={this.state.todos}
-            markComplete={this.markComplete}
-            delTodo={this.delTodo}
+          <Header />
+          <Route exact path="/"
+            render={props => (
+              <div>
+                <AddTodo addTodo={this.addTodo} />
+                <Todos
+                  todos={this.state.todos}
+                  markComplete={this.markComplete}
+                  delTodo={this.delTodo}
+                />
+              </div>
+            )}
           />
+          <Route exact path="/about" render={props => (<About/>)}/>
         </div>
       </div>
+      </Router>
     );
   }
 }
