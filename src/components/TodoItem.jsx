@@ -10,12 +10,13 @@ class TodoItem extends Component {
         }
     }
     render() {
+        const { id, title, completed} = this.props.todo_item
         return (
             <div style={this.getStyle()}>
                 <p>
                     <input type="checkbox" />
-                    todo info
-                    <button style={btnStyle}>KUY</button>
+                    {title}
+                    <button style={btnStyle}>X</button>
                 </p>
             </div>
         );

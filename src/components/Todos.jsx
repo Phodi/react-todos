@@ -3,15 +3,7 @@ import Item from "./TodoItem"
 
 class Todos extends Component {
     render() {
-        return (
-            <div>
-                <h4>Todos Components</h4>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
-            </div>
-        );
+        return this.props.todos.map( todo => (<Item todo_item={todo}/>))
     }
 }
 
