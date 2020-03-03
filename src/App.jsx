@@ -29,9 +29,19 @@ class App extends Component {
   };
   markComplete = id => {
     console.log("mark " + id);
+    const newTodos = this.state.todos
+    newTodos.forEach( todo => {
+      if (todo.id === id) todo.completed = !todo.completed
+    })
   };
   delTodo = id => {
     console.log("del " + id);
+    let newTodos = this.state.todos
+    newTodos = newTodos.filter(todo => {
+      return todo.id !== id
+    })
+    console.log(newTodos)
+    this.setState({todos: newTodos})
   };
   render() {
     return (
